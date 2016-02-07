@@ -7,14 +7,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.github.florent37.beautifulparallax.ParallaxViewController;
-
 import java.util.ArrayList;
 
 public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.CustomViewHolder>{
     private static MyClickListener myClickListener;
     ArrayList<EventItem> eventItems;
-    ParallaxViewController parallaxViewController = new ParallaxViewController();
+    //ParallaxViewController parallaxViewController = new ParallaxViewController();
     public EventsAdapter (ArrayList<EventItem> eventItems){
         this.eventItems = eventItems;
     }
@@ -22,14 +20,14 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.CustomView
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
-        parallaxViewController.registerImageParallax(recyclerView);
+      //  parallaxViewController.registerImageParallax(recyclerView);
     }
 
     @Override
     public CustomViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.event_item, parent, false);
         CustomViewHolder viewHolder = new CustomViewHolder(view);
-        parallaxViewController.imageParallax(viewHolder.background);
+        //parallaxViewController.imageParallax(viewHolder.background);
         return viewHolder;
     }
 

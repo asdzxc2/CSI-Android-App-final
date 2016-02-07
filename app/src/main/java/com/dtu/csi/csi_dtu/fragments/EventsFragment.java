@@ -27,7 +27,10 @@ public class EventsFragment extends BaseFragment implements View.OnTouchListener
     RecyclerView.Adapter mRecyclerAdapter;
     RecyclerView.LayoutManager mRecyclerLayoutManager;
     ArrayList<EventItem> data;
+    int [] images={R.drawable.bg,R.drawable.hasta_la_vista,R.drawable.avantgarde};
+    String[] event_name={"Cogenesis","Hasta La Vista","Avant-Garde" };
     int[] clickPoint = new int[2];
+    int[] numberOfEvents={11,5,5};
     public EventsFragment() {}
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
@@ -36,9 +39,12 @@ public class EventsFragment extends BaseFragment implements View.OnTouchListener
         mRecyclerView.setHasFixedSize(true);
         mRecyclerLayoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(mRecyclerLayoutManager);
-        EventItem eventItem = new EventItem(R.drawable.bg, R.drawable.bg, "Phoenix");
-        EventItem[] items = new EventItem[5];
-        Arrays.fill(items, eventItem);
+        //EventItem eventItem = new EventItem(R.drawable.bg, R.drawable.bg, "Phoenix");
+        EventItem[] items = new EventItem[3];
+
+        for(int i=0;i<3;i++)
+         items[i]=new EventItem(images[i],R.drawable.csi_logo,event_name[i]);
+        //Arrays.fill(items, eventItem);
         data = new ArrayList<>(Arrays.asList(items));
         mRecyclerAdapter = new EventsAdapter(data);
         mRecyclerView.setAdapter(mRecyclerAdapter);
@@ -55,6 +61,7 @@ public class EventsFragment extends BaseFragment implements View.OnTouchListener
                     Intent intent = new Intent(getContext(), EventActivity.class);
                     intent.putExtra("Position", position);
                     intent.putExtra("start_point", clickPoint);
+                    intent.putExtra("number_of_events",numberOfEvents[position]);
                     startActivity(intent);
                     getActivity().overridePendingTransition(0, 0);
                 }
