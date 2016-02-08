@@ -29,9 +29,7 @@ public class EventActivity extends CircularRevealActivity{
     ViewPager pager;
     int numberOfTabs ;
     List<String> listItems = new ArrayList<String>();
-    //CharSequence tabTitles[];// = {"Event 1", "Event 2", "Event 3", "Event 4", "Event 5"};
     MainPagerAdapter adapter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +48,6 @@ public class EventActivity extends CircularRevealActivity{
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setUpTabs();
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -61,11 +58,10 @@ public class EventActivity extends CircularRevealActivity{
         }
         return super.onOptionsItemSelected(item);
     }
-
-
     void setUpTabs(){
         switch (numberOfTabs) {
-            case 11:listItems.add("CODE GOLF");
+            case 11:
+                listItems.add("CODE GOLF");
                 listItems.add("CRYPTEX");
                 listItems.add("NEUVO GENGO");
                 listItems.add("CRANIUM");
@@ -77,14 +73,10 @@ public class EventActivity extends CircularRevealActivity{
                 listItems.add("MIND MUMBLE");
                 listItems.add("SMASH DUB");
                 break;
-
         }
         CharSequence[] tabTitles = listItems.toArray(new CharSequence[listItems.size()]);
-
-
         adapter =  new MainPagerAdapter(this.getSupportFragmentManager(), tabTitles,listItems.size());
         pager.setAdapter(adapter);
         tabs.setupWithViewPager(pager);
-        //setupTabIcons();
     }
 }

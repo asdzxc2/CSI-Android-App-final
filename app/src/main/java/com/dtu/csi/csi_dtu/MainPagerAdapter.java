@@ -1,5 +1,6 @@
 package com.dtu.csi.csi_dtu;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -7,7 +8,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import com.dtu.csi.csi_dtu.fragments.EventDetailsFragment;
 
 public class MainPagerAdapter extends FragmentStatePagerAdapter{
-    CharSequence tabTitles[] = {"Event 1", "Event 2", "Event 3", "Event 4", "Event 5"};
+    CharSequence tabTitles[];
     int numOfTabs;
     public MainPagerAdapter(FragmentManager fm, CharSequence titles[], int numOfTabs) {
         super(fm);
@@ -17,7 +18,11 @@ public class MainPagerAdapter extends FragmentStatePagerAdapter{
 
     @Override
     public Fragment getItem(int position) {
-        return new EventDetailsFragment();
+        Fragment fragment = new EventDetailsFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("name", tabTitles[position].toString().toLowerCase());
+        fragment.setArguments(bundle);
+        return fragment;
     }
 
     @Override

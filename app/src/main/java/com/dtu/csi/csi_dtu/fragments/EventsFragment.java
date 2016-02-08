@@ -41,7 +41,7 @@ public class EventsFragment extends BaseFragment implements View.OnTouchListener
         mRecyclerView.setLayoutManager(mRecyclerLayoutManager);
         //EventItem eventItem = new EventItem(R.drawable.bg, R.drawable.bg, "Phoenix");
         EventItem[] items = new EventItem[3];
-
+        EventDetailsFragment.generateEvents();
         for(int i=0;i<3;i++)
          items[i]=new EventItem(images[i],R.drawable.csi_logo,event_name[i]);
         //Arrays.fill(items, eventItem);

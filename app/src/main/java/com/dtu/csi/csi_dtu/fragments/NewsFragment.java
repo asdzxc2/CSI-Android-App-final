@@ -1,5 +1,8 @@
 package com.dtu.csi.csi_dtu.fragments;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -26,8 +29,7 @@ import java.util.Date;
 
 import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter;
 
-public class
-        NewsFragment extends BaseFragment{
+public class NewsFragment extends BaseFragment{
     RecyclerView news;
     String[] newsLines = new String[10];
     int[] newsPhotos = new int[10];
@@ -35,6 +37,13 @@ public class
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View rootView = inflateAndBind(inflater, container, R.layout.fragment_news);
+        if(!isNetworkAvailable()) {
+            ImageView disconnected = (ImageView) rootView.findViewById(R.id.disconnected);
+            disconnected.setVisibility(View.VISIBLE);
+            return rootView;
+        }
+        ImageView disconnected = (ImageView) rootView.findViewById(R.id.disconnected);
+        disconnected.setVisibility(View.INVISIBLE);
         news = (RecyclerView) rootView.findViewById(R.id.news_list);
         newton = (NewtonCradleLoading) rootView.findViewById(R.id.newton);
         newton.setVisibility(View.GONE);
@@ -111,5 +120,11 @@ public class
             }
         });
         MySingleton.getInstance(getContext()).addToRequestQueue(request);
+    }
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 }
