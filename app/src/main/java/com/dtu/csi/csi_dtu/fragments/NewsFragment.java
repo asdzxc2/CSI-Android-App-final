@@ -70,7 +70,8 @@ public class NewsFragment extends BaseFragment{
         public void onBindViewHolder(CustomViewHolder holder, int position) {
             holder.newsPhoto.setImageResource(photos[position]);
             holder.newsLine.setText(headlines[position]);
-            holder.date.setText(new Date().toString());
+            String date = new Date().toString();
+            holder.date.setText(date.substring(0, date.indexOf("GMT")).trim());
         }
 
         @Override

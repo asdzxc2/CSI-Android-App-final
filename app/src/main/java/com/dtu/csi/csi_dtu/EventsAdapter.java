@@ -34,7 +34,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.CustomView
     @Override
     public void onBindViewHolder(CustomViewHolder holder, int position) {
         holder.eventName.setText(eventItems.get(position).event);
-        holder.thumbnail.setImageResource(eventItems.get(position).thumbnail);
+        //holder.thumbnail.setImageResource(eventItems.get(position).thumbnail);
         holder.background.setImageResource(eventItems.get(position).header);
     }
 
@@ -44,11 +44,10 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.CustomView
     }
 
     public static class CustomViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        ImageView thumbnail, background;
+        ImageView background;
         TextView eventName;
         public CustomViewHolder(View itemView) {
             super(itemView);
-            thumbnail = (ImageView) itemView.findViewById(R.id.thumbnail);
             background = (ImageView) itemView.findViewById(R.id.item_header);
             eventName = (TextView) itemView.findViewById(R.id.event_name);
             itemView.setOnClickListener(this);

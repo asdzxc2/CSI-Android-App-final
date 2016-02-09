@@ -26,7 +26,7 @@ import butterknife.ButterKnife;
 public class EventDetailsFragment extends Fragment {
     static HashMap<String, Event> events = new HashMap<>();
     String eventName;
-    TextView description, contact;
+    TextView description, contact, link;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.event_description, null);
@@ -50,6 +50,14 @@ public class EventDetailsFragment extends Fragment {
                                     "tel:" +
                                             contact.getText().toString()
                                                     .substring(contact.getText().toString().indexOf(":")).trim())));
+                }
+            });
+            link = (TextView) root.findViewById(R.id.link);
+            link.setPaintFlags(contact.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+            link.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://www.facebook.com/PhoneixCSIDTU/")));
                 }
             });
         } catch (Exception e) {
@@ -87,6 +95,66 @@ public class EventDetailsFragment extends Fragment {
                 "mumble holds thrilling twists and turns for those who know it all!\n", ""));
         events.put("smash dub", new Event("Smash Dub", "An exciting online competition for our dubsmash fans and freaks to post their exciting\n" +
                 "videos and win exciting prizes..", ""));
+        events.put("ideate", new Event("Ideate", "The software competition and exhibition aims to unravel the hidden innovative software\n" +
+                "\n" +
+                "developers within us. This is an on the spot competition to display UML diagrams for given case study.", ""));
+        events.put("cogitate", new Event("Cogitate", "Brainstorm your mind to prepare a software project plan. Enumerate and examine factor\n" +
+                "\n" +
+                "affecting a software project like technologies, risk, cost, resources and personnel for given case study.", ""));
+        events.put("three lines of code", new Event("Three Lines of Code", "Three lines of code is an exigent event that will be held to challenge your\n" +
+                "\n" +
+                "spontaneity and flare in debugging and problem solving. Problem solving can involve modifying the \n" +
+                "\n" +
+                "highlighted three lines of the code or arranging the given modules or segments of program under time \n" +
+                "\n" +
+                "pressure and make the program work.", ""));
+        events.put("switch programming", new Event("Switch Programming", "Cook your own code and have a taste of what your teammate has made for\n" +
+                "\n" +
+                "you. Provided with a desired output, you and your teammate will code alternatively by switching on \n" +
+                "\n" +
+                "each intermittent sound of the buzzer.", ""));
+        events.put("testing geeks", new Event("Testing Geeks", "Writing code may be sometime easier but analyzing it can be tough. This event\n" +
+                "\n" +
+                "challenge your software testing ability. So do you have acumen of writing test cases for given code?", ""));
+        events.put("line seguidor", new Event("Line Seguidor", "The objective of this contest is for a robot to follow a black line on a white background,\n" +
+                "\n" +
+                "without losing the line, and navigating several 90 degree turns. The robot to complete the course in \n" +
+                "\n" +
+                "the shortest period of time while accurately tracking the course line from start to finish wins.", ""));
+        events.put("machine learning mania", new Event("Machine Learning Mania", "This competition is about creating an artificial intelligence program that\n" +
+                "\n" +
+                "could read the data sets, analyse it, self - learn it and then produce the optimized results. A workshop \n" +
+                "\n" +
+                "will be conducted before the competition about the basics of machine learning.", ""));
+        events.put("bug trail", new Event("Bugtrail", "The competitors will be provided with a certain programming codes, they have to find the\n" +
+                "\n" +
+                "bug and debug all the codes within the specified time.", ""));
+        events.put("codewhiz", new Event("Codewhiz", "Codewhiz is an online competitive coding competition of two days that would be\n" +
+                "\n" +
+                "conducted on CodeChef. The competitors will be provided the problems which they have to solve in a \n" +
+                "\n" +
+                "specified time limit.", ""));
+        events.put("dtu great marathon", new Event("DTU Great Marathon", "Marathon run for DTU students and other college students in which the\n" +
+                "\n" +
+                "participants have to run through the perimeter of DTU campus, marathon is for boys and girls both.", ""));
+        events.put("shades of mystery", new Event("Shades of Mystery", "Shades of Mystery is a quizzing competition containing three types of quiz viz.,\n" +
+                "\n" +
+                "aptitude quiz, sitcom quiz and sports quiz.", ""));
+        events.put("codefest", new Event("CodeFest", "The coding sprint for passionate programmers. Long running coding competition. Do you\n" +
+                "\n" +
+                "have the stamina to solve 10 problems in 5 hours of code?", ""));
+        events.put("paper presentation", new Event("Paper Presentation", "The research paper presentation competition, prefect platform for all the\n" +
+                "\n" +
+                "researchers to get their work evaluated. If you have done any research work then this is the\n" +
+                "\n" +
+                "to present up your research paper in front of industrial and professional judge panel.", ""));
+        events.put("conference", new Event("Conference", "Bridging the distance between students and industrial professionals, it aims at helping\n" +
+                "\n" +
+                "the students create a better and thorough perspective regarding the real world and the opportunities \n" +
+                "\n" +
+                "that it beholds. With talks by industrial experts from various fields, it sure is an enlightening and \n" +
+                "\n" +
+                "learning experience for everyone who attends.", ""));
     }
     void setUpView(ViewGroup root){
         ButterKnife.bind(this, root);

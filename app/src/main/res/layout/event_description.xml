@@ -34,5 +34,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            style="@style/CardContent"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textColor="#000000"
+                style="@style/CardContent2"
+                android:padding="20dp"
+                android:text="@string/link"
+                android:id="@+id/link"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </android.support.v7.widget.CardView>
     </LinearLayout>
 </ScrollView>

@@ -11,6 +11,8 @@ import android.view.View;
 
 import com.dtu.csi.csi_dtu.MainPagerAdapter;
 import com.dtu.csi.csi_dtu.R;
+import com.flaviofaria.kenburnsview.KenBurnsView;
+import com.flaviofaria.kenburnsview.Transition;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +32,10 @@ public class EventActivity extends CircularRevealActivity{
     int numberOfTabs ;
     List<String> listItems = new ArrayList<String>();
     MainPagerAdapter adapter;
+    @Bind(R.id.header_activity)
+    KenBurnsView header;
+    int i = 0;
+    int headers[] = {R.drawable.cover1, R.drawable.cover2, R.drawable.cover3, R.drawable.cover4};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +52,20 @@ public class EventActivity extends CircularRevealActivity{
         setSupportActionBar(toolbar);
         CoordinatorLayout layout;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        header.setImageResource(headers[i]);
+        header.setTransitionListener(new KenBurnsView.TransitionListener() {
+            @Override
+            public void onTransitionStart(Transition transition) {
+
+            }
+            @Override
+            public void onTransitionEnd(Transition transition) {
+                i++;
+                if(i > 3)
+                    i = 0;
+                header.setImageResource(headers[i]);
+            }
+        });
         setUpTabs();
     }
     @Override
@@ -72,6 +92,19 @@ public class EventActivity extends CircularRevealActivity{
                 listItems.add("SUDO CODE");
                 listItems.add("MIND MUMBLE");
                 listItems.add("SMASH DUB");
+                listItems.add("IDEATE");
+                listItems.add("COGITATE");
+                listItems.add("THREE LINES OF CODE");
+                listItems.add("SWITCH PROGRAMMING");
+                listItems.add("TESTING GEEKS");
+                listItems.add("MACHINE LEARNING MANIA");
+                listItems.add("BUG TRAIL");
+                listItems.add("CODEWHIZ");
+                listItems.add("DTU GREAT MARATHON");
+                listItems.add("SHADES OF MYSTERY");
+                listItems.add("CODEFEST");
+                listItems.add("PAPER PRESENTATION");
+                listItems.add("CONFERENCE");
                 break;
         }
         CharSequence[] tabTitles = listItems.toArray(new CharSequence[listItems.size()]);

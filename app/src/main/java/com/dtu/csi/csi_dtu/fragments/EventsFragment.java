@@ -27,7 +27,7 @@ public class EventsFragment extends BaseFragment implements View.OnTouchListener
     RecyclerView.Adapter mRecyclerAdapter;
     RecyclerView.LayoutManager mRecyclerLayoutManager;
     ArrayList<EventItem> data;
-    int [] images={R.drawable.bg,R.drawable.hasta_la_vista,R.drawable.avantgarde};
+    int [] images={R.drawable.cover, R.drawable.hasta_la_vista, R.drawable.avantgarde};
     String[] event_name={"Cogenesis","Hasta La Vista","Avant-Garde" };
     int[] clickPoint = new int[2];
     int[] numberOfEvents={11,5,5};
