@@ -1,12 +1,17 @@
 package com.dtu.csi.csi_dtu.activities;
 
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.dtu.csi.csi_dtu.R;
@@ -17,6 +22,15 @@ import com.dtu.csi.csi_dtu.fragments.EventsFragment;
 import com.dtu.csi.csi_dtu.fragments.GalleryFragment;
 import com.dtu.csi.csi_dtu.fragments.NewsFragment;
 import com.dtu.csi.csi_dtu.fragments.SponsorsFragment;
+import com.facebook.AccessToken;
+import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.HttpMethod;
+import com.facebook.appevents.AppEventsLogger;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
@@ -26,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
@@ -94,6 +109,12 @@ public class MainActivity extends AppCompatActivity {
         BaseFragment fragment = new NewsFragment();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.main, fragment).commit();
+
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+//        AppEventsLogger.activateApp(this);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
-        android:background="#3677ff"
+        android:background="@color/primary"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapse_toolbar"
@@ -17,7 +17,7 @@
             app:titleEnabled="false"
             android:layout_height="250dp"
             android:fitsSystemWindows="true"
-            app:contentScrim="#3677ff"
+            app:contentScrim="@color/primary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
             <com.flaviofaria.kenburnsview.KenBurnsView
                 android:id="@+id/header_activity"
@@ -38,6 +38,9 @@
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                 app:titleMarginTop="15dp" />
             <android.support.design.widget.TabLayout
+                app:tabTextColor="#ffffff"
+                app:tabSelectedTextColor="#ffffff"
+                android:background="@color/primary"
                 android:id="@+id/tabs"
                 app:tabMode="scrollable"
                 android:layout_width="match_parent"
@@ -47,6 +50,7 @@
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
     <android.support.v4.view.ViewPager
+        android:background="@color/news_background"
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

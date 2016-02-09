@@ -3,8 +3,8 @@
     <color name="list_divider">#ffffff</color>
     <color name="list_background">#ffffff</color>
     <color name="list_background_pressed">#f5f5f5</color>
-    <color name="primary">#3677ff</color>
-    <color name="primary_dark">#ca0a307e</color>
-    <color name="news_background">#74a0fb</color>
+    <color name="primary">#051d49</color>
+    <color name="primary_dark">#00102b</color>
+    <color name="news_background">#002460</color>
 
 </resources>

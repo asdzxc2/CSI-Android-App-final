@@ -1,7 +1,7 @@
 <resources>
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimaryDark">#204799</item>
+        <item name="colorPrimaryDark">#00102b</item>
     </style>
 
     <style name="CardContent">

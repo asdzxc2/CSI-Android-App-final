@@ -134,4 +134,5 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="link">https://www.facebook.com/PhoneixCSIDTU/</string>
+    <string name="facebook_app_id">605382859616232</string>
 </resources>
