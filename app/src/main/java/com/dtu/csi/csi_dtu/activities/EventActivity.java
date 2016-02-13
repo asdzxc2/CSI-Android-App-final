@@ -35,12 +35,12 @@ public class EventActivity extends CircularRevealActivity{
     @Bind(R.id.header_activity)
     KenBurnsView header;
     int i = 0;
-    int headers[] = {R.drawable.cover1, R.drawable.cover2, R.drawable.cover3, R.drawable.cover4};
+    int headers[] = {R.drawable.poster1, R.drawable.poster2, R.drawable.poster3, R.drawable.poster4, R.drawable.poster5, R.drawable.poster6};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event);
-        numberOfTabs= getIntent().getIntExtra("number_of_events",0);
+        numberOfTabs = getIntent().getIntExtra("number_of_events",0);
         position = getIntent().getIntExtra("Position", 0);
         ButterKnife.bind(this);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -61,9 +61,14 @@ public class EventActivity extends CircularRevealActivity{
             @Override
             public void onTransitionEnd(Transition transition) {
                 i++;
-                if(i > 3)
+                if(i > 6)
                     i = 0;
-                header.setImageResource(headers[i]);
+                try {
+                    header.setImageResource(headers[i]);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    header.restart();
+                }
             }
         });
         setUpTabs();
@@ -71,7 +76,6 @@ public class EventActivity extends CircularRevealActivity{
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            // Respond to the action bar's Up/Home button
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
                 return true;
