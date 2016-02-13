@@ -44,11 +44,10 @@ public class AboutFragment extends BaseFragment {
         recyclerView.setAdapter(adapter);
         AccelerateDecelerateInterpolator ACCELERATE_DECELERATE = new AccelerateDecelerateInterpolator();
         RandomTransitionGenerator generator = new RandomTransitionGenerator(5000, ACCELERATE_DECELERATE);
-        //duration = 10000ms = 10s and interpolator = ACCELERATE_DECELERATE
-        imageView.setTransitionGenerator(generator); //set new transition
+        imageView.setTransitionGenerator(generator);
         final Handler handler = new Handler();
         Runnable runnable = new Runnable() {
-            int i=3;
+            int i = 3;
             public void run() {
                 imageView.setImageResource(photos[i]);
                 Drawable oriDrawable = imageView.getDrawable();
@@ -59,8 +58,7 @@ public class AboutFragment extends BaseFragment {
                 System.gc();
 
                 i++;
-                if(i>photos.length-1)
-                {
+                if(i>photos.length-1){
                     i=0;
                 }
                 handler.postDelayed(this, 7000);  //for interval...
@@ -89,8 +87,10 @@ public class AboutFragment extends BaseFragment {
                 if(position == 0) {
                     text = getString(R.string.about_dtu);
                     title = "DTU";
-                }else
-                    text = "About CSI";
+                } else {
+                    title = "CSI";
+                    text = getContext().getString(R.string.about_csi);
+                }
                 DFragment fragment = new DFragment();
                 fragment.show(getFragmentManager(), "Dialog Fragment");
             }

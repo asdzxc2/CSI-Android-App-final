@@ -24,8 +24,7 @@
         android:id="@+id/item_header"
         android:scaleType="centerCrop"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:src="@drawable/london1"/>
+        android:layout_height="180dp"/>
     <TextView
         android:id="@+id/event_name"
         android:layout_width="wrap_content"

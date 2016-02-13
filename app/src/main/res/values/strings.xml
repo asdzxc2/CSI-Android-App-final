@@ -16,6 +16,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_about_app">AboutApp</string>
     <string name="about_dtu">A pioneer in technical education and research, Delhi Technological University (formerly Delhi College of Engineering) has marched from strength to strength throughout its illustrious history spanning 72 glorious years. The institution is spread across a sprawling 164 acre campus adjoining Rohini, Delhi, and boasts of world class infrastructure and state of the art technology. Home to over 8300 students, the college campus is truly a melting pot of cultures from across the length \'a-nil breadth of lndia and has also become a coveted destination for students from abroad. Encouraging thais growth, DTU is a hub of vibrant cultural activities and boasts of several cultural and literary societies. it has also forayed into Management education with the establishment of Delhi School of Management in 2009, thus spreading its ever-widening horizons in the field of knowledge and excellence.</string>
+    <string name="about_csi">"What is one of the best times for figuring out who you are and what you really want out of life ? Right after you enter college." Lot of students make the mistake of living their college life in much the same way as they live their school life. But is college life the same as your school life ? The is a unanimous NO. And the difference lies in the vast array of cultural and technical societies which are accessible in college. And here we are, talking about one such society, CSI.</string>
     <string name="contact_header">Contact : </string>
     <string name="contact_1">Rahul Arora : +919654107522</string>
     <string name="contact_2">Sajal : +919716686404</string>
@@ -46,7 +47,6 @@
     <string name="title_activity_scrolling">ScrollingActivity</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
-
         "A material metaphor is the unifying theory of a rationalized space and a system of motion."
         "The material is grounded in tactile reality, inspired by the study of paper and ink, yet "
         "technologically advanced and open to imagination and magic.\n"

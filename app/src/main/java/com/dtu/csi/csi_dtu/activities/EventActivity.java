@@ -1,6 +1,10 @@
 package com.dtu.csi.csi_dtu.activities;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.NavUtils;
@@ -8,10 +12,12 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
 
 import com.dtu.csi.csi_dtu.MainPagerAdapter;
 import com.dtu.csi.csi_dtu.R;
 import com.flaviofaria.kenburnsview.KenBurnsView;
+import com.flaviofaria.kenburnsview.RandomTransitionGenerator;
 import com.flaviofaria.kenburnsview.Transition;
 
 import java.util.ArrayList;
@@ -52,25 +58,26 @@ public class EventActivity extends CircularRevealActivity{
         setSupportActionBar(toolbar);
         CoordinatorLayout layout;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        header.setImageResource(headers[i]);
-        header.setTransitionListener(new KenBurnsView.TransitionListener() {
-            @Override
-            public void onTransitionStart(Transition transition) {
-
-            }
-            @Override
-            public void onTransitionEnd(Transition transition) {
+        AccelerateDecelerateInterpolator ACCELERATE_DECELERATE = new AccelerateDecelerateInterpolator();
+        RandomTransitionGenerator generator = new RandomTransitionGenerator(5000, ACCELERATE_DECELERATE);
+        header.setTransitionGenerator(generator);
+        final Handler handler = new Handler();
+        Runnable runnable = new Runnable() {
+            int i = 5;
+            public void run() {
+                Bitmap bmp = BitmapFactory.decodeResource(getResources(), headers[i]);
+                header.setImageBitmap(Bitmap.createScaledBitmap(bmp, 200, 200, false));
+                bmp.recycle();
+                Drawable oriDrawable = header.getDrawable();
+                oriDrawable.setCallback(null);
+                System.gc();
                 i++;
-                if(i > 6)
+                if(i > 5)
                     i = 0;
-                try {
-                    header.setImageResource(headers[i]);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    header.restart();
-                }
+                handler.postDelayed(this, 7000);  //for interval...
             }
-        });
+        };
+        handler.postDelayed(runnable, 100);
         setUpTabs();
     }
     @Override
